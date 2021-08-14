@@ -1,4 +1,4 @@
-module Api
+module Api::V1
   class PostsController < ApplicationController
 
     def index
@@ -30,9 +30,9 @@ module Api
         @post = Post.find(params[:id])
       end
 
-      # def post_params
-      #   params.require(:post).permit(:name)
-      # end
+      def post_params
+        params.require(:post).permit(:title, :author, :body)
+      end
 
   end
 end
