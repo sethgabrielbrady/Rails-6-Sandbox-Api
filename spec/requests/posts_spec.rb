@@ -18,7 +18,9 @@ describe 'Posts API', type: :request do
   describe 'POST /posts' do
     it 'should create a new post' do
       expect {
-        post '/api/v1/posts', params: { post: {title:'The Test', author:'Bill Hinkle', body:'Much to do about nothing.'} }
+        post '/api/v1/posts', params: {
+          post: {title:'The Test', author:'Bill Hinkle', body:'Much to do about nothing.'}
+        }, headers: {"Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSJ9.M1vu6qDej7HzuSxcfbE6KAMekNUXB3EWtxwS0pg4UGg"}
       }.to change { Post.count }.from(0).to(1)
 
       expect(response).to have_http_status(:created)
